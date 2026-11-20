@@ -29,7 +29,9 @@ pragma solidity ^0.8.19;
  */
 
 contract Raffle {
-    /** Errors */
+    /**
+     * Errors
+     */
     error Raffle__NotEnoughEth();
 
     uint256 private immutable i_entranceFee;
@@ -38,7 +40,9 @@ contract Raffle {
     address payable[] private s_players;
     uint256 private s_lastTimeStamp;
 
-    /** Events */
+    /**
+     * Events
+     */
     event RaffleEntered(address indexed player);
 
     constructor(uint256 entranceFee, uint256 interval) {
@@ -64,7 +68,9 @@ contract Raffle {
         }
     }
 
-    /** getter function */
+    /**
+     * getter function
+     */
     function getEntranceFee() external view returns (uint256) {
         return i_entranceFee;
     }

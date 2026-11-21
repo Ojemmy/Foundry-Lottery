@@ -112,6 +112,8 @@ contract Raffle is VRFConsumerBaseV2Plus {
             bytes memory /* performData */
         )
     {
+        // This interval check intentionally permits a winner to be picked any time after the interval.
+        // forge-lint: disable-next-line(block-timestamp)
         bool timeHasPassed = ((block.timestamp - s_lastTimeStamp) >= i_interval);
         bool isOpen = s_raffleState == RaffleState.OPEN;
         bool hasBalance = address(this).balance > 0;
@@ -160,6 +162,8 @@ contract Raffle is VRFConsumerBaseV2Plus {
         s_lastTimeStamp = block.timestamp;
         emit WinnerPicked(s_recentWinner);
 
+        // recentWinner is randomly selected from s_players, not a user-controlled parameter.
+        // forge-lint: disable-next-line(arbitrary-send-eth)
         (bool success,) = recentWinner.call{value: address(this).balance}("");
         if (!success) {
             revert Raffle__TransferFail();

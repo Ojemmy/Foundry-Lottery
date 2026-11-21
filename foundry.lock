@@ -22,5 +22,11 @@
       "name": "0.4.0",
       "rev": "efff097a87e70c3d15661c9f2a2daeae0b33d5d5"
     }
+  },
+  "lib/openzeppelin-contracts": {
+    "tag": {
+      "name": "v4.9.6",
+      "rev": "dc44c9f1a4c3b10af99492eed84f83ed244203f6"
+    }
   }
 }
